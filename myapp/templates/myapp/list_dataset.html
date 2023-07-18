@@ -1,0 +1,16 @@
+<!-- list_datasets.html -->
+
+{% extends 'myapp/base.html' %}
+
+{% block content %}
+  <h1>Dataset List</h1>
+  {% if datasets %}
+    <ul>
+      {% for dataset in datasets %}
+        <li><a href="{% url 'dataset_detail' dataset.id %}">{{ dataset.title }}</a></li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No datasets found.</p>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,65 @@
+<!-- create_dataset.html -->
+
+{% extends 'myapp/base.html' %}
+
+{% block title %}Create Dataset{% endblock %}
+
+{% block content %}
+  {% comment %} <h1>Create Dataset</h1>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ dataset_form.as_p }}
+    {{ image_formset.management_form }}
+    {% for form in image_formset %}
+      {{ form.as_p }}
+    {% endfor %}
+    <button type="submit">Save</button>
+  </form> {% endcomment %}
+
+  <!-- create_dataset.html -->
+
+  {% comment %} <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label for="title">Title:</label>
+    <input type="text" name="title" id="title" required>
+    <br>
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name" required>
+    <br>
+    <label for="description">Description:</label>
+    <textarea name="description" id="description" required></textarea>
+    <br>
+    <label for="images">Images:</label>
+    <input type="file" name="images" id="images" multiple required>
+    <br>
+    <input type="submit" value="Create">
+  </form> {% endcomment %}
+
+  <!-- create_dataset.html -->
+
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ dataset_form.as_p }}
+    <br>
+    {% comment %} <br>
+    <p>Dataset Title:</p>
+    {{ image_formset.management_form }}
+    <br>
+    <p>Input File:</p>
+    <br>
+    <br>
+    <label for="title">Title:</label>
+    <input type="text" name="title" id="title" required>
+    <br>
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name" required>
+    <br>
+    <label for="description">Description:</label>
+    <textarea name="description" id="description" required></textarea>
+    <br>
+    <label for="images">Images:</label>
+    <input type="file" name="images" id="images" multiple required>
+    <br> {% endcomment %}
+    <input type="submit" value="Create">
+  </form>
+{% endblock %}
