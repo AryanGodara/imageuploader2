@@ -8,6 +8,14 @@
     <ul>
       {% for dataset in datasets %}
         <li><a href="{% url 'dataset_detail' dataset.id %}">{{ dataset.title }}</a></li>
+        <li><a href="{% url 'dataset_delete' dataset.id %}">Delete</a></li>
+        <li>
+          {{ dataset.description }}
+          <form action="{% url 'download_images' dataset.id %}" method="post">
+              {% csrf_token %}
+              <button type="submit">Download Images</button>
+          </form>
+      </li>
       {% endfor %}
     </ul>
   {% else %}
