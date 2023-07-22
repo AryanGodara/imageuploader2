@@ -10,16 +10,24 @@
   <ul>
     <div class="row">
     {% for image in dataset.images.all %}
-
-      <p>
-        <a href="{{ image.image.url }}"><img src="{{ image.image.url }}" class="img-thumbnail resize" alt="{{ image.name }}" ></a>
-        
-        </p>
+      {% comment %} <p><a href="{{ image.image.url }}"><img src="{{ image.image.url }}" class="img-thumbnail resize" alt="{{ image.name }}" ></a></p> {% endcomment %}
+    
+  
+    <div class="col-md-4">
+      <a href="{{ image.image.url }}">
+      <img src="{{ image.image.url }}" alt="{{ image.name }}" class="img-thumbnail" alt="{{ image.name }}">
+      </a>
+    </div>
+    {% if forloop.counter|divisibleby:3 %}
+      </div><div class="row">
+    {% endif %}  
 
     {% empty %}
       <p>No images found.</p>
-  
+    
+
     {% endfor %}
+    
   </div>
   </ul>
 {% endblock %}
