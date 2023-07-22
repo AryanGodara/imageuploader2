@@ -82,3 +82,6 @@ def download_images(request, dataset_id):
         shutil.rmtree(temp_dir, ignore_errors=True)
         os.remove(zip_file_path, ignore_errors=True)
         raise e
+
+def image(request):
+    return render(request,'myapp/images.html')

@@ -8,10 +8,18 @@
   <h1>{{ dataset.name }}</h1>
   <p>{{ dataset.description }}</p>
   <ul>
+    <div class="row">
     {% for image in dataset.images.all %}
-      <li><img src="{{ image.image.url }}" alt="{{ image.name }}"></li>
+
+      <p>
+        <a href="{{ image.image.url }}"><img src="{{ image.image.url }}" class="img-thumbnail resize" alt="{{ image.name }}" ></a>
+        
+        </p>
+
     {% empty %}
-      <li>No images found.</li>
+      <p>No images found.</p>
+  
     {% endfor %}
+  </div>
   </ul>
 {% endblock %}
