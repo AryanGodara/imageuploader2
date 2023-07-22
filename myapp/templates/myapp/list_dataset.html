@@ -3,20 +3,29 @@
 {% extends 'myapp/base.html' %}
 
 {% block content %}
-  <h1>Dataset List</h1>
+  <h1 style="font-family: sans-serif">Dataset List</h1>
   {% if datasets %}
     <ul>
+<div class="row gap-3 ">
       {% for dataset in datasets %}
-        <li><a href="{% url 'dataset_detail' dataset.id %}">{{ dataset.title }}</a></li>
-        <li><a href="{% url 'dataset_delete' dataset.id %}">Delete</a></li>
-        <li>
+      <div class="card" style="width: 20rem;">
+        <div class="card-body"  >
+        <p><a href="{% url 'dataset_detail' dataset.id %}" class="text-dark link-underline-light fst-italic text-capitalize"><h5>{{ dataset.title }}</h5> </a></p>
+        
+        <p>
           {{ dataset.description }}
-          <form action="{% url 'download_images' dataset.id %}" method="post">
-              {% csrf_token %}
-              <button type="submit">Download Images</button>
-          </form>
-      </li>
+          <div class="btn-group gap-3">
+          <p><a href="{% url 'download_images' dataset.id %}" class=" link-underline-light btn btn-outline-info p-2"><font style="color: lightskyblue;">Download images</font></a></p>
+      
+          <p><a href="{% url 'dataset_delete' dataset.id %}" class="link-underline-light btn btn-outline-info p-2"><font style="color: lightskyblue;">Delete</font></a></p>
+          </div>
+        </p>
+        
+    </div>
+    </div>
       {% endfor %}
+    </div>
+    
     </ul>
   {% else %}
     <p>No datasets found.</p>
